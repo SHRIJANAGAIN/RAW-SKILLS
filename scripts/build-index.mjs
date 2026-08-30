@@ -1,0 +1,69 @@
+import { readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const TOP_SKIP = new Set([".git", ".github", "scripts", "node_modules"]);
+const UPDATED = new Date().toISOString().slice(0, 10);
+
+function skillFolders() {
+  return readdirSync(root, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && !TOP_SKIP.has(entry.name))
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function frontmatterDescription(file) {
+  if (!existsSync(file)) return "";
+  const text = readFileSync(file, "utf8");
+  const fm = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+  const lines = (fm ? fm[1] : text).split(/\r?\n/);
+  for (let i = 0; i < lines.length; i++) {
+    const match = /^description:\s*(.*)$/i.exec(lines[i]);
+    if (!match) continue;
+    const inline = match[1].trim();
+    const continuation = [];
+    for (let j = i + 1; j < lines.length; j++) {
+      if (/^\S/.test(lines[j])) break;
+      if (lines[j].trim()) continuation.push(lines[j].trim());
+    }
+    return [inline, ...continuation].filter(Boolean).join(" ").replace(/^["']|["']$/g, "");
+  }
+  const firstLine = lines.find((line) => line.trim() && !line.startsWith("#") && line.trim() !== "---");
+  return (firstLine || "").trim();
+}
+
+function countFiles(dir) {
+  let total = 0;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === ".git") continue;
+    total += entry.isDirectory() ? countFiles(join(dir, entry.name)) : 1;
+  }
+  return total;
+}
+
+const skills = skillFolders();
+const out = [
+  "# Skill Index",
+  "",
+  `Every top-level folder in this repository is one skill. This index lists all ${skills.length} skill folders with the description from their \`SKILL.md\` frontmatter.`,
+  "",
+  "- Repository: <https://github.com/SHRIJANAGAIN/raw-skills>",
+  `- Last updated: ${UPDATED}`,
+  `- Content: ${countFiles(root).toLocaleString("en-US")} files`,
+  "",
+  "| # | Skill | Description |",
+  "| --- | --- | --- |",
+];
+
+skills.forEach((name, i) => {
+  const description = frontmatterDescription(join(root, name, "SKILL.md"))
+    .replace(/\s+/g, " ")
+    .trim();
+  const short = description.length > 180 ? `${description.slice(0, 177)}...` : description || "-";
+  out.push(`| ${i + 1} | [${name}](${encodeURI(name)}/SKILL.md) | ${short.replace(/\|/g, "\\|")} |`);
+});
+
+out.push("");
+writeFileSync(join(root, "SKILLS.md"), out.join("\n"), "utf8");
+console.log(`Wrote SKILLS.md with ${skills.length} skills.`);
