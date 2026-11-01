@@ -5,6 +5,8 @@ category: development
 risk: safe
 source: community
 date_added: "2026-03-05"
+author: SKT AI LABS
+version: 1.0.0
 ---
 
 # Bug Hunter
