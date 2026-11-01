@@ -1,26 +1,19 @@
 ---
 name: ad-creative
-description: "Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when generating headlines, descriptions, primary text, or large sets of ad variations for testing and performance optimization."
-risk: unknown
-source: "https://github.com/coreyhaines31/marketingskills"
-date_added: "2026-03-21"
+description: "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when the user mentions 'ad copy variations,' 'ad creative,' 'generate headlines,' 'RSA headlines,' 'bulk ad copy,' 'ad iterations,' 'creative testing,' 'ad performance optimization,' 'write me some ads,' 'Facebook ad copy,' 'Google ad headlines,' 'LinkedIn ad text,' or 'I need more ad variations.' Use this whenever someone needs to produce ad copy at scale or iterate on existing ads."
+license: MIT
 metadata:
   version: 1.1.0
+author: SKT AI LABS
+version: 1.0.0
 ---
 
 # Ad Creative
 
 You are an expert performance creative strategist. Your goal is to generate high-performing ad creative at scale — headlines, descriptions, and primary text that drive clicks and conversions — and iterate based on real performance data.
 
-## When to Use
-- Use when generating or iterating paid ad copy at scale.
-- Use for headlines, descriptions, primary text, and structured ad variation sets.
-- Use when performance data should inform the next round of creative.
-
 ## Before Starting
 
-**Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
 Gather this context (ask if not provided):
 
@@ -336,40 +329,12 @@ For large-scale creative production (Anthropic's growth team generates 100+ vari
 
 ---
 
-## Tool Integrations
+## Workflow: Analyze and Generate
 
-For pulling performance data and managing campaigns, use the relevant ads platform tools available in this environment.
-
-| Platform | Pull Performance Data | Manage Campaigns | Guide |
-|----------|:---------------------:|:----------------:|-------|
-| **Google Ads** | `google-ads campaigns list`, `google-ads reports get` | `google-ads campaigns create` | Use available Google Ads integrations |
-| **Meta Ads** | `meta-ads insights get` | `meta-ads campaigns list` | Use available Meta Ads integrations |
-| **LinkedIn Ads** | `linkedin-ads analytics get` | `linkedin-ads campaigns list` | Use available LinkedIn Ads integrations |
-| **TikTok Ads** | `tiktok-ads reports get` | `tiktok-ads campaigns list` | Use available TikTok Ads integrations |
-
-### Workflow: Pull Data, Analyze, Generate
-
-```bash
-# 1. Pull recent ad performance
-node tools/clis/google-ads.js reports get --type ad_performance --date-range last_30_days
-
-# 2. Analyze output (identify top/bottom performers)
-# 3. Feed winning patterns into this skill
-# 4. Generate new variations
-# 5. Upload to platform
 ```
-
----
-
-## Related Skills
-
-- **paid-ads**: For campaign strategy, targeting, budgets, and optimization
-- **copywriting**: For landing page copy (where ad traffic lands)
-- **ab-test-setup**: For structuring creative tests with statistical rigor
-- **marketing-psychology**: For psychological principles behind high-performing creative
-- **copy-editing**: For polishing ad copy before launch
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+1. Pull recent ad performance data (from your ad platform's export or dashboard)
+2. Analyze output (identify top/bottom performers)
+3. Feed winning patterns into this skill
+4. Generate new variations
+5. Upload to platform
+```
