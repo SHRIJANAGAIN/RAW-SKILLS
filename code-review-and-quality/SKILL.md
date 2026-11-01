@@ -1,6 +1,8 @@
 ---
 name: code-review-and-quality
 description: Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a human. Use when you need to assess code quality across multiple dimensions before it enters the main branch.
+author: SKT AI LABS
+version: 1.0.0
 ---
 
 # Code Review and Quality
@@ -348,8 +350,8 @@ For triaging `npm audit` findings and supply-chain risk (typosquatting, compromi
 ```
 ## See Also
 
-- For detailed security review guidance, see `../../references/security-checklist.md`
-- For performance review checks, see `../../references/performance-checklist.md`
+- For detailed security review guidance, see the five-axes Security section above and the shared `owasp-security` skill (`../../06-security/owasp-security/SKILL.md`)
+- For performance review checks, see the Performance checklist above (§5 / checklist)
 
 ## Common Rationalizations
 
