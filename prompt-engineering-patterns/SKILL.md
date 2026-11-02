@@ -4,6 +4,8 @@ description: "Master advanced prompt engineering techniques to maximize LLM perf
 risk: unknown
 source: community
 date_added: "2026-02-27"
+author: SKT AI LABS
+version: 1.0.0
 ---
 
 # Prompt Engineering Patterns
@@ -20,7 +22,7 @@ Master advanced prompt engineering techniques to maximize LLM performance, relia
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
+- If detailed examples are required, follow the complete workflow inline above (the upstream implementation-playbook companion is not bundled).
 
 ## Use this skill when
 
