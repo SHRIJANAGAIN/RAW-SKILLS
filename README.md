@@ -171,12 +171,3 @@ Rules that matter across agents:
 3. Regenerate the index before opening a PR: `node scripts/build-index.mjs`.
 4. Open a pull request describing the skill and when an agent should use it.
 
----
-
-## License
-
-[MIT](LICENSE) - Copyright (c) 2026 SHRIJAN KUMAR TIWARI.
-
----
-
-https://github.com/SHRIJANAGAIN/RAW-SKILLS.git
