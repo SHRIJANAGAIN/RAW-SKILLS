@@ -1,4 +1,4 @@
-[![RAW SKILLS](assets/banner.svg)](https://github.com/SHRIJANAGAIN/RAW-SKILLS)
+﻿[![RAW SKILLS](assets/banner.svg)](https://github.com/SHRIJANAGAIN/RAW-SKILLS)
 
 # RAW SKILLS
 
@@ -8,7 +8,7 @@ Windsurf, GitHub Copilot, Cline, Roo Code, Aider, Continue, Zed and plain chat m
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Files](https://img.shields.io/badge/files-13%2C430-blue.svg)](#whats-inside)
-[![Folders](https://img.shields.io/badge/folders-5%2C099-blue.svg)](#whats-inside)
+[![Folders](https://img.shields.io/badge/folders-5%2C101-blue.svg)](#whats-inside)
 [![Skills](https://img.shields.io/badge/skills-1%2C976-purple.svg)](SKILLS.md)
 [![Last Updated](https://img.shields.io/badge/last%20updated-2026--11--05-lightgrey.svg)](#)
 
@@ -23,7 +23,7 @@ Windsurf, GitHub Copilot, Cline, Roo Code, Aider, Continue, Zed and plain chat m
 | Metric | Value |
 | --- | --- |
 | Files | 13,430 |
-| Folders | 5,099 |
+| Folders | 5,101 |
 | Skills | 1,976 (1,971 ship a `SKILL.md`; the rest are bundles) |
 | Total size | ~191 MB |
 
