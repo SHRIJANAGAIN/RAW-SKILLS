@@ -1,4 +1,4 @@
-﻿[![RAW SKILLS](assets/banner.svg)](https://github.com/SHRIJANAGAIN/RAW-SKILLS)
+[![RAW SKILLS](assets/banner.svg)](https://github.com/SHRIJANAGAIN/RAW-SKILLS)
 
 # RAW SKILLS
 
