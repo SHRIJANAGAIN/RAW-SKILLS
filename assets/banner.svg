@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="RAW SKILLS - agent skills collection">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1a"/>
+      <stop offset="55%" stop-color="#0f1728"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="45%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#c7d2fe"/>
+      <stop offset="100%" stop-color="#a5b4fc"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e2a44" stroke-width="1" opacity="0.55"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.15" cy="0.05" r="0.85">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="320" fill="url(#bg)"/>
+  <rect width="1280" height="320" fill="url(#grid)"/>
+  <rect width="1280" height="320" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="6" fill="url(#accent)"/>
+
+  <g font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif">
+    <text x="72" y="104" font-size="20" letter-spacing="7" fill="#60a5fa" font-weight="600">AGENT SKILLS COLLECTION</text>
+
+    <text x="68" y="190" font-size="88" font-weight="800" fill="url(#title)" letter-spacing="1">RAW SKILLS</text>
+
+    <text x="72" y="236" font-size="24" fill="#94a3b8">1,976 skills for Trayambak, Claude Code, OpenCode, Codex, Gemini, Cursor and more.</text>
+
+    <g font-size="17" font-weight="600">
+      <rect x="72" y="262" width="164" height="38" rx="19" fill="#0b2135" stroke="#1d4ed8" stroke-opacity="0.55"/>
+      <text x="154" y="287" fill="#93c5fd" text-anchor="middle">13,430 files</text>
+
+      <rect x="250" y="262" width="176" height="38" rx="19" fill="#1a1035" stroke="#7c3aed" stroke-opacity="0.55"/>
+      <text x="338" y="287" fill="#c4b5fd" text-anchor="middle">5,000+ folders</text>
+
+      <rect x="440" y="262" width="150" height="38" rx="19" fill="#0d2b1f" stroke="#10b981" stroke-opacity="0.55"/>
+      <text x="515" y="287" fill="#6ee7b7" text-anchor="middle">MIT license</text>
+
+      <rect x="604" y="262" width="196" height="38" rx="19" fill="#2a1220" stroke="#db2777" stroke-opacity="0.55"/>
+      <text x="702" y="287" fill="#f9a8d4" text-anchor="middle">13,474+ commits</text>
+    </g>
+  </g>
+
+  <g transform="translate(1010 96)">
+    <rect x="0" y="0" width="196" height="128" rx="20" fill="#0c1526" stroke="#243049" stroke-width="2"/>
+    <g fill="none" stroke="url(#accent)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 54 40 L 34 64 L 54 88"/>
+      <path d="M 142 40 L 162 64 L 142 88"/>
+      <path d="M 112 30 L 84 98"/>
+    </g>
+  </g>
+</svg>
