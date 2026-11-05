@@ -3,14 +3,21 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const TOP_SKIP = new Set([".git", ".github", "scripts", "node_modules"]);
+const SKILLS_DIR = join(root, "skills");
+const REPO_URL = "https://github.com/SHRIJANAGAIN/RAW-SKILLS";
 const UPDATED = new Date().toISOString().slice(0, 10);
 
+// skills/<bucket>/<skill-name>/SKILL.md
 function skillFolders() {
-  return readdirSync(root, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && !TOP_SKIP.has(entry.name))
-    .map((entry) => entry.name)
-    .sort((a, b) => a.localeCompare(b));
+  if (!existsSync(SKILLS_DIR)) return [];
+  const found = [];
+  for (const bucket of readdirSync(SKILLS_DIR, { withFileTypes: true })) {
+    if (!bucket.isDirectory()) continue;
+    for (const skill of readdirSync(join(SKILLS_DIR, bucket.name), { withFileTypes: true })) {
+      if (skill.isDirectory()) found.push({ bucket: bucket.name, name: skill.name });
+    }
+  }
+  return found.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function frontmatterDescription(file) {
@@ -46,22 +53,24 @@ const skills = skillFolders();
 const out = [
   "# Skill Index",
   "",
-  `Every top-level folder in this repository is one skill. This index lists all ${skills.length} skill folders with the description from their \`SKILL.md\` frontmatter.`,
+  `All ${skills.length.toLocaleString("en-US")} skills in this repository, grouped by the bucket folder that holds them. Each entry links to its \`SKILL.md\`.`,
   "",
-  "- Repository: <https://github.com/SHRIJANAGAIN/raw-skills>",
+  `- Repository: <${REPO_URL}>`,
   `- Last updated: ${UPDATED}`,
   `- Content: ${countFiles(root).toLocaleString("en-US")} files`,
   "",
-  "| # | Skill | Description |",
-  "| --- | --- | --- |",
+  "| # | Skill | Path | Description |",
+  "| --- | --- | --- | --- |",
 ];
 
-skills.forEach((name, i) => {
-  const description = frontmatterDescription(join(root, name, "SKILL.md"))
+skills.forEach(({ bucket, name }, i) => {
+  const description = frontmatterDescription(join(SKILLS_DIR, bucket, name, "SKILL.md"))
     .replace(/\s+/g, " ")
     .trim();
-  const short = description.length > 180 ? `${description.slice(0, 177)}...` : description || "-";
-  out.push(`| ${i + 1} | [${name}](${encodeURI(name)}/SKILL.md) | ${short.replace(/\|/g, "\\|")} |`);
+  const short = description.length > 160 ? `${description.slice(0, 157)}...` : description || "-";
+  out.push(
+    `| ${i + 1} | ${name} | [skills/${bucket}/${name}](${encodeURI(`skills/${bucket}/${name}`)}/SKILL.md) | ${short.replace(/\|/g, "\\|")} |`
+  );
 });
 
 out.push("");

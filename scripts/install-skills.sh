@@ -23,11 +23,7 @@ mkdir -p "$target"
 
 if [ "$1" = "--all" ]; then
   count=0
-  for dir in "$root"/*/; do
-    name="$(basename "$dir")"
-    case "$name" in
-      scripts|node_modules) continue ;;
-    esac
+  for dir in "$root"/skills/*/*/; do
     cp -r "$dir" "$target/"
     count=$((count + 1))
   done
@@ -36,10 +32,11 @@ if [ "$1" = "--all" ]; then
 fi
 
 for name in "$@"; do
-  if [ ! -f "$root/$name/SKILL.md" ]; then
-    echo "skip: $name (no SKILL.md)" >&2
+  source="$(find "$root/skills" -maxdepth 2 -type d -name "$name" -print -quit)"
+  if [ -z "$source" ] || [ ! -f "$source/SKILL.md" ]; then
+    echo "skip: $name (no SKILL.md in skills/*/$name)" >&2
     continue
   fi
-  cp -r "$root/$name" "$target/"
+  cp -r "$source" "$target/"
   echo "copied $name"
 done
